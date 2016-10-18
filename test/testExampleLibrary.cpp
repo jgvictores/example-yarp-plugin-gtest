@@ -16,12 +16,14 @@ class ExampleLibraryTest : public testing::Test
     public:
         virtual void SetUp() {
 
+            printf("YARP_VERBOSE before forcing is: %s\n", std::getenv("YARP_VERBOSE") );
             setenv("YARP_VERBOSE","1",1);  //-- Does not seem to have any additional effect in travis.
+            printf("YARP_VERBOSE after forcing is:  %s\n", std::getenv("YARP_VERBOSE") );
 
             //yarp::os::ResourceFinder::setVerbose();  //-- Way out of scope: not static, and we do not use ResourceFinder here.
 
             yarp::os::Property options;
-			options.put("device","ExampleLibrary");
+            options.put("device","ExampleLibrary");
 
             device.open(options);
             if( ! device.isValid() ) {
