@@ -3,6 +3,9 @@
 #ifndef __EXAMPLE_LIBRARY_HPP__
 #define __EXAMPLE_LIBRARY_HPP__
 
+#include <yarp/os/all.h>
+#include <yarp/dev/all.h>
+
 namespace teo
 {
 
@@ -12,10 +15,17 @@ namespace teo
  * @brief exampleLibrary
  *
  */
-class ExampleLibrary {
-    public:
+class ExampleLibrary : public yarp::dev::DeviceDriver {
 
-    protected:
+public:
+
+	ExampleLibrary();
+
+	virtual bool open(yarp::os::Searchable& config);
+
+	virtual bool close();
+
+protected:
 
 };
 

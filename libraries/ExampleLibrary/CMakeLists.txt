@@ -2,41 +2,32 @@
 
 cmake_minimum_required(VERSION 2.6)
 
-IF (ENABLE_ExampleLibrary)
-
-set(KEYWORD "ExampleLibrary")
-
 # Find YARP.
 find_package(YARP REQUIRED)
 
-# Search for source code.
-file(GLOB folder_source *.cpp *.cc *.c)
-file(GLOB folder_header *.h)
-source_group("Source Files" FILES ${folder_source})
-source_group("Header Files" FILES ${folder_header})
+YARP_PREPARE_DEVICE(ExampleLibrary
+                    TYPE teo::ExampleLibrary
+                    INCLUDE ExampleLibrary.hpp)
 
-# Automatically add include directories if needed.
-foreach(header_file ${folder_header})
-  get_filename_component(p ${header_file} PATH)
-  include_directories(${p})
-endforeach(header_file ${folder_header})
+#include_directories(${YARP_INCLUDE_DIRS} ${GTEST_YARP_PLUGINS_INCLUDE_DIRS})
+include_directories(${YARP_INCLUDE_DIRS})
 
-include_directories(${YARP_INCLUDE_DIRS} ${GTEST_YARP_PLUGINS_INCLUDE_DIRS})
+yarp_add_plugin(ExampleLibrary ExampleLibrary.hpp ExampleLibrary.cpp)
 
-link_directories(${GTEST_YARP_PLUGINS_LINK_DIRS})
+#link_directories(${GTEST_YARP_PLUGINS_LINK_DIRS})
 
-# Set up our main executable.
-if (folder_source)
-  add_library(${KEYWORD} ${folder_source} ${folder_header})
-  target_link_libraries(${KEYWORD} ${YARP_LIBRARIES})
-  install(TARGETS ${KEYWORD} DESTINATION bin)
-else (folder_source)
-  message(FATAL_ERROR "No source code files found. Please add something")
-endif (folder_source)
+target_link_libraries(ExampleLibrary ${YARP_LIBRARIES})
 
-  # Exporting dependencies for GTEST_YARP_PLUGINSConfig.cmake quite manually for now...
-  set(GTEST_YARP_PLUGINS_INCLUDE_DIRS ${GTEST_YARP_PLUGINS_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR} CACHE INTERNAL "appended libraries")
-  set(GTEST_YARP_PLUGINS_LIBRARIES ${GTEST_YARP_PLUGINS_LIBRARIES} ExampleLibrary CACHE INTERNAL "appended libraries")
+#yarp_install(TARGETS ExampleLibrary
+#             EXPORT YARP
+#             COMPONENT runtime
+#             LIBRARY DESTINATION ${YARP_DYNAMIC_PLUGINS_INSTALL_DIR}
+#             ARCHIVE DESTINATION ${YARP_STATIC_PLUGINS_INSTALL_DIR})
 
-ENDIF (ENABLE_ExampleLibrary)
+#yarp_install(FILES ExampleLibrary.ini
+#             COMPONENT runtime
+#             DESTINATION ${YARP_PLUGIN_MANIFESTS_INSTALL_DIR})
+
+install(TARGETS ExampleLibrary DESTINATION lib)
+
 

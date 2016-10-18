@@ -4,22 +4,26 @@
 #include <yarp/dev/Drivers.h>
 #include <yarp/dev/PolyDriver.h>
 
+YARP_DECLARE_PLUGINS(GtestYarp)
+
 namespace teo
 {
 
 /**
  * @brief Test
  */
-class ExampleTest : public testing::Test
+class ExampleLibraryTest : public testing::Test
 {
 
     public:
         virtual void SetUp() {
 
-            setenv("YARP_VERBOSE","1",1);
+            YARP_REGISTER_PLUGINS(GtestYarp);
+
+            //setenv("YARP_VERBOSE","1",1);
             //yarp::os::ResourceFinder::setVerbose();
 
-            yarp::os::Property options("(device Example)");
+            yarp::os::Property options("(device ExampleLibrary)");
 
             device.open(options);
             if( ! device.isValid() ) {
@@ -37,7 +41,7 @@ class ExampleTest : public testing::Test
         yarp::dev::PolyDriver device;
 };
 
-TEST_F( ExampleTest, ExampleTest1)
+TEST_F( ExampleLibraryTest, ExampleTest1)
 {
     ASSERT_EQ(1, 1 );
 }

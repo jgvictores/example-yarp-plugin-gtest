@@ -13,10 +13,10 @@ endif(COMMAND cmake_policy)
 
 project(GTEST_YARP_PLUGINS)
 
-option(BUILD_SHARED_LIBS "All shared libs" TRUE)
+#option(BUILD_SHARED_LIBS "All shared libs" TRUE)
 
 ### options: cpp libraries
-option(ENABLE_ExampleLibrary "Choose if you want to compile ExampleLibrary" TRUE)
+option(ENABLE_GtestYarp_ExampleLibrary "Choose if you want to compile ExampleLibrary" TRUE)
 
 ### options: cpp programs
 #option(ENABLE_exampleProgram "Choose if you want to compile exampleProgram" TRUE)
