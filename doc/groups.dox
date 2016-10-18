@@ -1,0 +1,33 @@
+
+/**
+@brief The main, catch-all namespace for TEO.
+ */
+namespace teo {}
+
+/**
+ * \defgroup gtest-yarp-plugins_libraries gtest-yarp-plugins Libraries
+ *
+ * @brief gtest-yarp-plugins libraries.
+ *
+ */
+
+/**
+ * \defgroup gtest-yarp-plugins_programs gtest-yarp-plugins Programs
+ *
+ * @brief gtest-yarp-plugins programs.
+ */
+
+/**
+ * \defgroup gtest-yarp-plugins_applications gtest-yarp-plugins Applications (Collections of Programs)
+ *
+ * @brief gtest-yarp-plugins applications (collections of programs).
+ */
+
+/**
+ * \defgroup gtest-yarp-plugins_examples gtest-yarp-plugins Examples
+ *
+ * @brief gtest-yarp-plugins examples.
+ */
+
+
+
