@@ -38,6 +38,10 @@ if (MSVC)
    mark_as_advanced(CMAKE_BUILD_TYPE)
 endif(MSVC)
 
+##### test and coverage options
+option(ENABLE_tests "Choose if you want to compile tests" TRUE)
+option(ENABLE_coverage "Choose if you want to enable coverage collection" FALSE)
+
 ######################
 
 ### this makes everything go in $GTEST_YARP_PLUGINS_DIR/lib and $GTEST_YARP_PLUGINS_DIR/bin
@@ -67,6 +71,9 @@ set(GTEST_YARP_PLUGINS_LIBRARIES CACHE INTERNAL "appended libraries" FORCE)
 # add main contents
 #add_subdirectory(share)
 add_subdirectory(libraries)
+if (ENABLE_tests)
+    add_subdirectory(test)
+endif (ENABLE_tests)
 
 # export our variables to a GTEST_YARP_PLUGINSConfig.cmake creation
 set(GTEST_YARP_PLUGINS_LINK_DIRS ${GTEST_YARP_PLUGINS_LINK_DIRS} ${LIBRARY_OUTPUT_PATH})
