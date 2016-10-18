@@ -4,6 +4,7 @@
 #define __EXAMPLE_PROGRAM_HPP__
 
 #include <yarp/os/all.h>
+#include <yarp/dev/all.h>
 
 namespace teo
 {
@@ -24,6 +25,8 @@ class ExampleProgram : public yarp::os::RFModule {
         virtual double getPeriod();
         virtual bool updateModule();
 
+        yarp::dev::PolyDriver device;
+        int counter;
 };
 
 }  // namespace teo
