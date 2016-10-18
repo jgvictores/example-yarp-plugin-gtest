@@ -42,6 +42,5 @@ script:
   - bin/testExampleLibrary
 
 after_success:
-  #  - cd ${TRAVIS_BUILD_DIR}
   - sudo make uninstall
 
