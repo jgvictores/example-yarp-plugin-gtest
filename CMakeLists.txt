@@ -13,6 +13,8 @@ endif(COMMAND cmake_policy)
 
 project(GTEST_YARP_PLUGINS)
 
+option(BUILD_SHARED_LIBS "All shared libs" TRUE)
+
 ### options: cpp libraries
 option(ENABLE_ExampleLibrary "Choose if you want to compile ExampleLibrary" TRUE)
 
@@ -65,7 +67,6 @@ set(GTEST_YARP_PLUGINS_LIBRARIES CACHE INTERNAL "appended libraries" FORCE)
 # add main contents
 #add_subdirectory(share)
 add_subdirectory(libraries)
-#add_subdirectory(programs)
 
 # export our variables to a GTEST_YARP_PLUGINSConfig.cmake creation
 set(GTEST_YARP_PLUGINS_LINK_DIRS ${GTEST_YARP_PLUGINS_LINK_DIRS} ${LIBRARY_OUTPUT_PATH})
