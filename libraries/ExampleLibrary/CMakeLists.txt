@@ -9,12 +9,12 @@ YARP_PREPARE_DEVICE(ExampleLibrary
                     TYPE teo::ExampleLibrary
                     INCLUDE ExampleLibrary.hpp)
 
-#include_directories(${YARP_INCLUDE_DIRS} ${GTEST_YARP_PLUGINS_INCLUDE_DIRS})
+#include_directories(${YARP_INCLUDE_DIRS} ${EXAMPLE_YARP_PLUGIN_GTEST_INCLUDE_DIRS})
 include_directories(${YARP_INCLUDE_DIRS})
 
 yarp_add_plugin(ExampleLibrary ExampleLibrary.hpp ExampleLibrary.cpp)
 
-#link_directories(${GTEST_YARP_PLUGINS_LINK_DIRS})
+#link_directories(${EXAMPLE_YARP_PLUGIN_GTEST_LINK_DIRS})
 
 target_link_libraries(ExampleLibrary ${YARP_LIBRARIES})
 

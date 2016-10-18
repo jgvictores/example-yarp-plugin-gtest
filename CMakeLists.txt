@@ -11,7 +11,7 @@ if(COMMAND cmake_policy)
   cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
 
-project(GTEST_YARP_PLUGINS)
+project(EXAMPLE_YARP_PLUGIN_GTEST)
 
 option(BUILD_SHARED_LIBS "All shared libs" TRUE)
 
@@ -44,7 +44,7 @@ option(ENABLE_coverage "Choose if you want to enable coverage collection" FALSE)
 
 ######################
 
-### this makes everything go in $GTEST_YARP_PLUGINS_DIR/lib and $GTEST_YARP_PLUGINS_DIR/bin
+### this makes everything go in $EXAMPLE_YARP_PLUGIN_GTEST_DIR/lib and $EXAMPLE_YARP_PLUGIN_GTEST_DIR/bin
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 message(STATUS "Libraries go to ${LIBRARY_OUTPUT_PATH}")
@@ -60,13 +60,13 @@ mark_as_advanced(CMAKE_BACKWARDS_COMPATIBILITY)
 ##########################################
 
 # Pick up our cmake modules - they are all in the cmake subdirectory
-set(GTEST_YARP_PLUGINS_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+set(EXAMPLE_YARP_PLUGIN_GTEST_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 # let cmake use them
-list(APPEND CMAKE_MODULE_PATH ${GTEST_YARP_PLUGINS_MODULE_PATH})
+list(APPEND CMAKE_MODULE_PATH ${EXAMPLE_YARP_PLUGIN_GTEST_MODULE_PATH})
 
-set(GTEST_YARP_PLUGINS_INCLUDE_DIRS CACHE INTERNAL "appended header dirs" FORCE)
-set(GTEST_YARP_PLUGINS_LINK_DIRS CACHE INTERNAL "appended link dirs" FORCE)
-set(GTEST_YARP_PLUGINS_LIBRARIES CACHE INTERNAL "appended libraries" FORCE)
+set(EXAMPLE_YARP_PLUGIN_GTEST_INCLUDE_DIRS CACHE INTERNAL "appended header dirs" FORCE)
+set(EXAMPLE_YARP_PLUGIN_GTEST_LINK_DIRS CACHE INTERNAL "appended link dirs" FORCE)
+set(EXAMPLE_YARP_PLUGIN_GTEST_LIBRARIES CACHE INTERNAL "appended libraries" FORCE)
 
 # add main contents
 add_subdirectory(libraries)
@@ -74,10 +74,10 @@ if (ENABLE_tests)
     add_subdirectory(test)
 endif (ENABLE_tests)
 
-# export our variables to a GTEST_YARP_PLUGINSConfig.cmake creation
-set(GTEST_YARP_PLUGINS_LINK_DIRS ${GTEST_YARP_PLUGINS_LINK_DIRS} ${LIBRARY_OUTPUT_PATH})
-configure_file(${CMAKE_SOURCE_DIR}/cmake/template/GTEST_YARP_PLUGINSConfig.cmake.in
-               ${CMAKE_BINARY_DIR}/GTEST_YARP_PLUGINSConfig.cmake @ONLY)
+# export our variables to a EXAMPLE_YARP_PLUGIN_GTESTConfig.cmake creation
+set(EXAMPLE_YARP_PLUGIN_GTEST_LINK_DIRS ${EXAMPLE_YARP_PLUGIN_GTEST_LINK_DIRS} ${LIBRARY_OUTPUT_PATH})
+configure_file(${CMAKE_SOURCE_DIR}/cmake/template/EXAMPLE_YARP_PLUGIN_GTESTConfig.cmake.in
+               ${CMAKE_BINARY_DIR}/EXAMPLE_YARP_PLUGIN_GTESTConfig.cmake @ONLY)
 
 # create a symbolic link to the shared directory (as contains models and may be heavy)
 # If you want a deep copy, you can use the copy_directory command instead of create_symlink.
@@ -90,9 +90,9 @@ configure_file(${CMAKE_SOURCE_DIR}/cmake/template/GTEST_YARP_PLUGINSConfig.cmake
 
 # uninstall target
 configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/template/GTEST_YARP_PLUGINSConfigUninstall.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/GTEST_YARP_PLUGINSConfigUninstall.cmake" IMMEDIATE @ONLY)
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/template/EXAMPLE_YARP_PLUGIN_GTESTConfigUninstall.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/EXAMPLE_YARP_PLUGIN_GTESTConfigUninstall.cmake" IMMEDIATE @ONLY)
 
 add_custom_target(uninstall
-    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/GTEST_YARP_PLUGINSConfigUninstall.cmake)
+    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/EXAMPLE_YARP_PLUGIN_GTESTConfigUninstall.cmake)
 
