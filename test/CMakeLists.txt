@@ -9,5 +9,5 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR} ${YARP_INCLU
 link_directories(${YARP_LINK_DIRS})
 
 add_executable(testExampleLibrary testExampleLibrary.cpp)
-target_link_libraries(testExampleLibrary ${YARP_LIBRARIES} gtest gtest_main GtestYarp ExampleLibrary)
+target_link_libraries(testExampleLibrary ${YARP_LIBRARIES} gtest gtest_main)
 

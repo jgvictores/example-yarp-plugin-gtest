@@ -18,16 +18,17 @@ yarp_add_plugin(ExampleLibrary ExampleLibrary.hpp ExampleLibrary.cpp)
 
 target_link_libraries(ExampleLibrary ${YARP_LIBRARIES})
 
-#yarp_install(TARGETS ExampleLibrary
-#             EXPORT YARP
-#             COMPONENT runtime
-#             LIBRARY DESTINATION ${YARP_DYNAMIC_PLUGINS_INSTALL_DIR}
-#             ARCHIVE DESTINATION ${YARP_STATIC_PLUGINS_INSTALL_DIR})
+#install(TARGETS ExampleLibrary DESTINATION lib)
+yarp_install(TARGETS ExampleLibrary
+             EXPORT YARP
+             COMPONENT runtime
+             LIBRARY DESTINATION ${YARP_DYNAMIC_PLUGINS_INSTALL_DIR}
+             ARCHIVE DESTINATION ${YARP_STATIC_PLUGINS_INSTALL_DIR})
 
-#yarp_install(FILES ExampleLibrary.ini
-#             COMPONENT runtime
-#             DESTINATION ${YARP_PLUGIN_MANIFESTS_INSTALL_DIR})
+yarp_install(FILES ExampleLibrary.ini
+             COMPONENT runtime
+             DESTINATION ${YARP_PLUGIN_MANIFESTS_INSTALL_DIR})
 
-install(TARGETS ExampleLibrary DESTINATION lib)
+
 
 

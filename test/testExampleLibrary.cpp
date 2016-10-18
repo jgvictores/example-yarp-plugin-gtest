@@ -4,8 +4,6 @@
 #include <yarp/dev/Drivers.h>
 #include <yarp/dev/PolyDriver.h>
 
-YARP_DECLARE_PLUGINS(GtestYarp)
-
 namespace teo
 {
 
@@ -17,8 +15,6 @@ class ExampleLibraryTest : public testing::Test
 
     public:
         virtual void SetUp() {
-
-            YARP_REGISTER_PLUGINS(GtestYarp);
 
             //setenv("YARP_VERBOSE","1",1);
             //yarp::os::ResourceFinder::setVerbose();
