@@ -1,3 +1,3 @@
-# gtest-yarp-plugins
-gtest-yarp-plugins
+# example-yarp-plugin-gtest
+example-yarp-plugin-gtest
 
