@@ -16,10 +16,12 @@ class ExampleLibraryTest : public testing::Test
     public:
         virtual void SetUp() {
 
-            //setenv("YARP_VERBOSE","1",1);
-            //yarp::os::ResourceFinder::setVerbose();
+            setenv("YARP_VERBOSE","1",1);  //-- Does not seem to have any additional effect in travis.
 
-            yarp::os::Property options("(device ExampleLibrary)");
+            //yarp::os::ResourceFinder::setVerbose();  //-- Way out of scope: not static, and we do not use ResourceFinder here.
+
+            yarp::os::Property options;
+			options.put("device","ExampleLibrary");
 
             device.open(options);
             if( ! device.isValid() ) {
