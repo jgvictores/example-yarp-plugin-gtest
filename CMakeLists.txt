@@ -19,7 +19,7 @@ option(BUILD_SHARED_LIBS "All shared libs" TRUE)
 option(ENABLE_GtestYarp_ExampleLibrary "Choose if you want to compile ExampleLibrary" TRUE)
 
 ### options: cpp programs
-#option(ENABLE_exampleProgram "Choose if you want to compile exampleProgram" TRUE)
+option(ENABLE_exampleProgram "Choose if you want to compile exampleProgram" TRUE)
 
 ### options: force default
 option(ENABLE_exampleExtraOption "Enable/disable option exampleExtraOption" TRUE)
@@ -70,6 +70,7 @@ set(EXAMPLE_YARP_PLUGIN_GTEST_LIBRARIES CACHE INTERNAL "appended libraries" FORC
 
 # add main contents
 add_subdirectory(libraries)
+add_subdirectory(programs)
 if (ENABLE_tests)
     add_subdirectory(test)
 endif (ENABLE_tests)
