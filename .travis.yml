@@ -19,6 +19,8 @@ before_install:
 install:
   #-- Install cmake
   - sudo apt-get install cmake
+  #-- Install ACE
+  - sudo apt-get install libace-dev
   #-- Install yarp
   - git clone https://github.com/robotology/yarp
   - cd yarp && mkdir build && cd build
