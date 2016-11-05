@@ -39,7 +39,7 @@ if (MSVC)
 endif(MSVC)
 
 ##### test and coverage options
-option(ENABLE_tests "Choose if you want to compile tests" FALSE)
+option(ENABLE_tests "Choose if you want to compile tests" TRUE)
 
 ######################
 
