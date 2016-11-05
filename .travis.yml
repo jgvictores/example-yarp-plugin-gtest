@@ -20,6 +20,8 @@ install:
   #-- Install cmake
   - sudo apt-get install cmake
   #-- Install ACE
+  #-- Needed while https://github.com/robotology/yarp/blob/d790dbc/src/libYARP_dev/src/Drivers.cpp#L295 is around.
+  #-- See https://github.com/robotology/QA/issues/148 for full conversation.
   - sudo apt-get install libace-dev
   #-- Install yarp
   - git clone https://github.com/robotology/yarp
