@@ -42,7 +42,7 @@ script:
   - ldd /usr/local/lib/yarp/ExampleLibrary.so
   - echo $YARP_VERBOSE
   - exampleProgram
-  #- bin/testExampleLibrary  # Just for now
+  - bin/testExampleLibrary
 
 after_success:
   - sudo make uninstall
